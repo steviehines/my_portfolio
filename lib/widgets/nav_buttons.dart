@@ -1,26 +1,25 @@
 import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 List<Widget> navButtons() => [
       NavButton(
         text: "about",
         onPressed: () {
-          html.window.open(
-              "https://docs.google.com/document/d/e/2PACX-1vTbMb-buJih_JrranmZwhHgeIbMi79ireDW6HacBnGH4PqRCfg3h98d6baO4DfGAg/pub",
-              "Pk");
+          // launch('');
         },
       ),
       NavButton(
         text: "work",
         onPressed: () {
-          html.window.open("https://pawan.live", "Pk");
+          // launch('');
         },
       ),
       NavButton(
         text: "contact",
         onPressed: () {
-          html.window.open("https://pawan.live", "Pk");
+          // launch('');
         },
       ),
     ];

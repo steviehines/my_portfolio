@@ -3,29 +3,30 @@ import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/widgets/nav_buttons.dart';
 import 'package:my_portfolio/widgets/responsive_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SocialInfo extends StatelessWidget {
   List<Widget> socialMediaWidgets() {
     return [
       NavButton(
         text: "Github",
-        onPressed: () {
-          html.window.open("https://github.com/iampawan", "Git");
-        },
+        onPressed: () => launch(
+          "https://github.com/steviehines?tab=repositories",
+        ),
         color: Colors.blue,
       ),
       NavButton(
         text: "Twitter",
-        onPressed: () {
-          html.window.open("https://twitter.com/imthepk", "Twitter");
-        },
+        onPressed: () => launch(
+          "https://twitter.com/oriented0bject",
+        ),
         color: Colors.blue,
       ),
       NavButton(
-        text: "Facebook",
-        onPressed: () {
-          html.window.open("https://facebook.com/thepawankumaar", "Fb");
-        },
+        text: "LinkedIn",
+        onPressed: () => launch(
+          "https://www.linkedin.com/in/steve-hines-6567aa1b8/",
+        ),
         color: Colors.blue,
       ),
     ];
@@ -52,13 +53,7 @@ class SocialInfo extends StatelessWidget {
           copyRightText(),
         ],
       ),
-      smallScreen: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          ...socialMediaWidgets(),
-          copyRightText(),
-        ],
-      ),
+      smallScreen: copyRightText(),
     );
   }
 }

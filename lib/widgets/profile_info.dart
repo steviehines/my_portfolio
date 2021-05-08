@@ -1,26 +1,24 @@
 import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/functions/utils.dart';
 import 'package:my_portfolio/widgets/responsive_widget.dart';
+import 'package:transparent_image/transparent_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileInfo extends StatelessWidget {
-  profileImage(context) => Container(
-        height: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.25
-            : MediaQuery.of(context).size.width * 0.25,
-        width: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.25
-            : MediaQuery.of(context).size.width * 0.25,
-        decoration: BoxDecoration(
-          backgroundBlendMode: BlendMode.luminosity,
-          color: Colors.deepOrange,
-          //borderRadius: BorderRadius.circular(40),
-          shape: BoxShape.circle,
-          image: DecorationImage(
-            image: AssetImage("pk.jpg"),
-            alignment: Alignment.center,
-            fit: BoxFit.cover,
-          ),
+  profileImage(context) => ClipRRect(
+        borderRadius: BorderRadius.circular(255),
+        child: FadeInImage.memoryNetwork(
+          height: ResponsiveWidget.isSmallScreen(context)
+              ? MediaQuery.of(context).size.height * 0.25
+              : MediaQuery.of(context).size.width * 0.25,
+          width: ResponsiveWidget.isSmallScreen(context)
+              ? MediaQuery.of(context).size.height * 0.25
+              : MediaQuery.of(context).size.width * 0.25,
+          fit: BoxFit.cover,
+          placeholder: kTransparentImage,
+          image: path('assets/images/metoo.png'),
         ),
       );
 
@@ -41,60 +39,42 @@ class ProfileInfo extends StatelessWidget {
         ),
       ),
       SizedBox(
-        height: 10,
+        height: 20,
       ),
       Text(
-        "A Freelance Developer Expert for Dart & Cross-Platform Development.\n"
-        "I am also an undergrad student focusing on enterpreneurial opportunities.\n"
-        "Additionally proficient in Linux technologies and Cloud Computing.",
+        "A Freelance Developer Expert for Dart & \nCross-Platform Development.\n"
+        "I am also an undergrad student \nfocusing on enterpreneurial opportunities.\n"
+        "Additionally proficient in Linux \ntechnologies and Cloud Computing.",
         softWrap: true,
         textScaleFactor: 1.5,
         style: TextStyle(color: Colors.white70),
       ),
       SizedBox(
-        height: 20,
+        height: 60,
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          RaisedButton(
-            shape: StadiumBorder(),
-            child: Text("Resume"),
-            color: Colors.red,
-            onPressed: () {
-              html.window.open(
-                  "https://google-developers.appspot.com/community/experts/directory/profile/profile-pawan_kumar",
-                  "GDE");
-            },
-            padding: EdgeInsets.all(10),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          OutlineButton(
-            borderSide: BorderSide(
-              color: Colors.red,
-            ),
-            shape: StadiumBorder(),
-            child: Text("Say Hi!"),
-            color: Colors.red,
-            onPressed: () {
-              html.window.open("https://pawan.live", "Pk");
-            },
-            padding: EdgeInsets.all(10),
-          )
-        ],
-      )
     ],
   );
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
     return ResponsiveWidget(
       largeScreen: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[profileImage(context), profileData],
+        children: <Widget>[
+          profileImage(context),
+          SizedBox(
+            width: screenSize.width / 11,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              profileData,
+              Buttons(),
+            ],
+          )
+        ],
       ),
       smallScreen: Column(
         mainAxisSize: MainAxisSize.max,
@@ -102,11 +82,64 @@ class ProfileInfo extends StatelessWidget {
         children: <Widget>[
           profileImage(context),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.1,
+            height: screenSize.height / 11,
           ),
-          profileData
+          profileData,
+          Buttons(),
         ],
       ),
+    );
+  }
+}
+
+class Buttons extends StatelessWidget {
+  const Buttons({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        RaisedButton(
+          shape: StadiumBorder(),
+          child: Text("Resume"),
+          color: Colors.red,
+          onPressed: () {
+            launch(
+              "https://docs.google.com/document/d/e/2PACX-1vTbMb-buJih_JrranmZwhHgeIbMi79ireDW6HacBnGH4PqRCfg3h98d6baO4DfGAg/pub",
+            );
+          },
+          padding: EdgeInsets.all(10),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        OutlineButton(
+          borderSide: BorderSide(
+            color: Colors.red,
+          ),
+          shape: StadiumBorder(),
+          child: Text("Say Hi!"),
+          color: Colors.red,
+          onPressed: () {
+            launch(
+              "https://api.whatsapp.com/send?phone=+254722755322",
+            );
+          },
+          padding: EdgeInsets.all(10),
+        ),
+        // SizedBox(
+        //   width: 20,
+        // ),
+        // DownloadButton(
+        //   status: status,
+        //   onDownload: onDownload,
+        //   onCancel: onCancel,
+        //   onOpen: onOpen,
+        // ),
+      ],
     );
   }
 }
