@@ -14,6 +14,7 @@ class Drawz extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
+        height: screenSize.height,
         color: Colors.orange.withOpacity(.5),
         child: ListView(
           padding: const EdgeInsets.all(20),
@@ -22,18 +23,12 @@ class Drawz extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: navButtons(),
-                )
-              ],
-            ),
-            SizedBox(
-              height: screenSize.height / 1.51,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+                // Column(
+                //   children: navButtons(),
+                // ),
+                // SizedBox(
+                //   height: screenSize.height / 1.63,
+                // ),
                 NavButton(
                   text: "Github",
                   onPressed: () => launch(

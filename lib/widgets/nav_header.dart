@@ -19,7 +19,8 @@ class NavHeader extends StatelessWidget {
           //Spacer(),
           if (!ResponsiveWidget.isSmallScreen(context))
             Row(
-              children: navButtons!,
+              children: [Container()],
+              // navButtons!,
             )
         ],
       ),

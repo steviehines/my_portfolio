@@ -37,7 +37,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   ProfileInfo(),
                   SizedBox(
-                    height: screenSize.height / 11,
+                    height: screenSize.height / 31,
                   ),
                   SocialInfo(),
                   SizedBox(

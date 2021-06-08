@@ -42,7 +42,8 @@ class ProfileInfo extends StatelessWidget {
         height: 20,
       ),
       Text(
-        "A Freelance Developer Expert for Dart & \nCross-Platform Development.\n"
+        "A Freelance Developer Expert for Dart & \nCross-Platform Development,\n"
+        "version-control systems and CI/CD and \nalso software product design.\n"
         "I am also an undergrad student \nfocusing on enterpreneurial opportunities.\n"
         "Additionally proficient in Linux \ntechnologies and Cloud Computing.",
         softWrap: true,
@@ -50,7 +51,7 @@ class ProfileInfo extends StatelessWidget {
         style: TextStyle(color: Colors.white70),
       ),
       SizedBox(
-        height: 60,
+        height: 30,
       ),
     ],
   );
@@ -108,8 +109,7 @@ class Buttons extends StatelessWidget {
           color: Colors.red,
           onPressed: () {
             launch(
-              "https://docs.google.com/document/d/e/2PACX-1vTbMb-buJih_JrranmZwhHgeIbMi79ireDW6HacBnGH4PqRCfg3h98d6baO4DfGAg/pub",
-            );
+                'https://drive.google.com/file/d/1ml_ggcoVUA6kbzBTS5nX8rhFPgo5-PUA/view?usp=sharing');
           },
           padding: EdgeInsets.all(10),
         ),
